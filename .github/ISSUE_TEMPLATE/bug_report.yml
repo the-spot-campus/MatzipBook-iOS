@@ -33,7 +33,7 @@ body:
     attributes:
       label: ✅ 기대 동작
       description: 버그가 발생하지 않았을 경우의 정상적인 동작을 작성해주세요.
-      placeholder: 예: 정상적으로 홈 화면으로 이동해야 합니다.
+      placeholder: "예: 정상적으로 홈 화면으로 이동해야 합니다."
     validations:
       required: true
 

@@ -1,0 +1,99 @@
+# 검사 제외할 디렉토리 (라이브러리 등 무시 대상)
+excluded:
+    - Pods
+
+# 선택적으로 활성화하는 고급 룰들
+opt_in_rules:
+    - force_unwrapping
+    - force_cast
+    - discouraged_optional_boolean
+    - empty_count
+    - empty_enum_arguments                 # 불필요한 열거형 인자 제거
+    - explicit_init                        # 명시적인 이니셜라이저 사용
+    - fatal_error_message                  # fatalError에 메시지 포함 요구
+    - multiline_function_chains            # 체이닝 시 줄바꿈 강제
+    - override_in_extension                # 확장에서 override 제한
+    - sorted_imports                       # import 순서 정렬
+    - unused_closure_parameter
+    - unused_declaration                   # 사용되지 않는 선언 제거
+    - vertical_parameter_alignment_on_call # 함수 호출 시 파라미터 정렬
+    - yoda_condition                       # 조건문에서 상수 == 변수 패턴 제한
+    - closure_end_indentation
+
+nesting:
+    type_level:
+        warning: 2
+
+# 줄 길이 제한 설정
+line_length:
+    warning: 100                       # 100자를 초과할 시 경고
+    ignores_urls: true                 # URL을 최대 길이 규칙에서 제외
+    ignores_comments: true             # 주석은 최대 길이 규칙에서 제외
+    ignores_interpolated_strings: true # 문자열 보간법 사용 시 최대 길이 규칙 제외
+
+file_length:
+    warning: 500
+
+# 강제 부분 error 설정
+force_unwrapping:
+    severity: error
+
+force_cast:
+    severity: error
+
+# 들여쓰기 및 공백 관련 룰
+trailing_whitespace:
+    ignores_empty_lines: true
+
+colon:
+    flexible_right_spacing: false
+    apply_to_dictionaries: true
+
+comma:
+    mandatory_comma: true
+
+# 연산자 공백 강제
+operator_usage_whitespace:
+    severity: warning
+
+# 클로저 관련 룰
+closure_spacing:
+    always_spaced: true
+    allow_trailing_closure: true
+
+closure_parameter_position:
+    severity: warning
+
+# self 키워드 사용 관련 설정
+explicit_self:
+    severity: warning
+    mode: unnecessary_only
+
+# 상속을 허용하지 않는 클래스는 final 명시
+final_class:
+    severity: warning
+
+# 사용하지 않는 옵셔널 바인딩 제한
+unused_optional_binding:
+    severity: warning
+
+# 문서화 주석 사용 권장
+documentation:
+    severity: warning
+
+# import 순서 및 중복 관리
+sorted_imports:
+    severity: warning
+    configuration:
+        sorted_imports: true
+        grouping: 'builtin,external'
+
+duplicate_imports: warning
+
+# 명시적 타입 표현 강제 (튜플 제외 가능)
+explicit_type_interface:
+    exclude_typed_tuples: false
+
+# Array/Dictionary 표현식 통일
+syntactic_sugar:
+    severity: warning

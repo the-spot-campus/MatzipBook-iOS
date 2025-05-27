@@ -17,7 +17,7 @@ jobs:
       - name: Start xcode build 🛠
         run: |
           xcodebuild \
-            -project MatzipBook/MatzipBook.xcworkspace \
+            -workspace MatzipBook/MatzipBook.xcworkspace \
             -scheme MatzipBook \
             -sdk iphonesimulator \
             -skipPackagePluginValidation \

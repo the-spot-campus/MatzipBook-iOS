@@ -6,4 +6,6 @@ target 'MatzipBook' do
   use_frameworks!
   
   # Pods for MatzipBook
+  pod 'SwiftLint'
+
 end

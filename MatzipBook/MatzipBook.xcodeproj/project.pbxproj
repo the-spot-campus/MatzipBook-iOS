@@ -100,6 +100,7 @@
 				05E5F5B32D956A6A00F0CB97 /* Sources */,
 				05E5F5B42D956A6A00F0CB97 /* Frameworks */,
 				05E5F5B52D956A6A00F0CB97 /* Resources */,
+				532A9B645B82AC22686798EF /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -177,6 +178,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
+		};
+		532A9B645B82AC22686798EF /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MatzipBook/Pods-MatzipBook-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-MatzipBook/Pods-MatzipBook-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-MatzipBook/Pods-MatzipBook-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
 		};
 		B3FD7D6A459785F2C512B25D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;

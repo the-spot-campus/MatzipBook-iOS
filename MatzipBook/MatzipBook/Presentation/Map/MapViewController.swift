@@ -7,11 +7,4 @@
 
 import UIKit
 
-class MapViewController: UIViewController {
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        view.backgroundColor = UIColor.mainBackgroundColor
-    }
-}
+final class MapViewController: BaseViewController {}

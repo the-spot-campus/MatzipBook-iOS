@@ -17,4 +17,5 @@ enum MatzipIcon: String {
     case icPersonSelected = "ic_person_selected"
     case icPersonUnselected = "ic_person_unselected"
     case icSearch = "ic_search"
+    case icClock = "ic_clock"
 }

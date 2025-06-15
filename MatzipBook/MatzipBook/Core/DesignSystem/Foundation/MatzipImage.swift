@@ -9,4 +9,6 @@ import Foundation
 
 enum MatzipImage: String {
     case imgLogo = "img_logo"
+    case imgBubble = "img_bubble"
+    case imgVS = "img_vs"
 }

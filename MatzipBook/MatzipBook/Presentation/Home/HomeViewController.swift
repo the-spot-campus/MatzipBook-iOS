@@ -49,6 +49,8 @@ final class HomeViewController: BaseViewController {
     // MARK: - Setup View
     
     override func setupStyles() {
+        super.setupStyles()
+        
         navigationController?.setNavigationBarHidden(true, animated: false)
     }
     

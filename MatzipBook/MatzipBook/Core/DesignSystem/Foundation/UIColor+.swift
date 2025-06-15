@@ -28,5 +28,9 @@ extension UIColor {
     static let mainBackgroundColor: UIColor = UIColor(hex: "FAFAFA")
     static let shadowColor: UIColor = UIColor(hex: "000000", alpha: 0.13)
     static let sub1: UIColor = UIColor(hex: "787878")
+    static let sub2: UIColor = UIColor(hex: "A8A8A8")
     static let separatorColor: UIColor = UIColor(hex: "D9D9D9")
+    static let mainLight2: UIColor = UIColor(hex: "FFB273")
+    static let boxColor: UIColor = UIColor(hex: "F0F0F0")
+    static let mainOrange: UIColor = UIColor(hex: "FF8400")
 }

@@ -55,7 +55,7 @@ final class HomeNavigationBarView: UIView {
         }
 
         universityNameLabel.do {
-            $0.font = .boldSystemFont(ofSize: 16)
+            $0.font = .applyFont(.bold, ofSize: 16)
             $0.textColor = .sub1
         }
 

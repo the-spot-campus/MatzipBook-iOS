@@ -10,6 +10,7 @@ import Foundation
 protocol HomeViewModelProtocol {
     var universityName: String { get }
     func didTapSearchButton()
+    func didTapSeeAllButton(for section: HomeSection)
 }
 
 final class HomeViewModel: HomeViewModelProtocol {
@@ -18,5 +19,9 @@ final class HomeViewModel: HomeViewModelProtocol {
     
     func didTapSearchButton() {
         print("DEBUG: Search button tapped")
+    }
+    
+    func didTapSeeAllButton(for section: HomeSection) {
+        print("DEBUG: See all button tapped for section >>> \(section.cellIdentifier)")
     }
 }

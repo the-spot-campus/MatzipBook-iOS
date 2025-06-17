@@ -9,7 +9,7 @@ import Foundation
 
 enum MatzipText {
     enum Vote {
-        static let title = "당신의 선택은?"
-        static let subtitle = "오늘 당신의 맛집을 투표해주세요!"
+        static let title: String = "당신의 선택은?"
+        static let subtitle: String = "오늘 당신의 맛집을 투표해주세요!"
     }
 }

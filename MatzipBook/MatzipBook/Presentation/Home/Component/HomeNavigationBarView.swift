@@ -58,11 +58,8 @@ final class HomeNavigationBarView: UIView {
             $0.font = .applyFont(.bold, ofSize: 16)
             $0.textColor = .sub1
         }
-
-        leftStackView.do {
-            $0.axis = .horizontal
-            $0.spacing = 4
-        }
+        
+        leftStackView.configureStackView(distribution: .fill, spacing: 4)
 
         searchButton.setImage(
             .icSearch.withRenderingMode(.alwaysOriginal),

@@ -12,23 +12,24 @@ final class HomeViewController: BaseViewController {
     // MARK: - Properties
     
     private let navigationBarView: HomeNavigationBarView = HomeNavigationBarView()
-    private let layoutFactory: HomeSectionLayoutFactory = HomeLayoutFactory()
     
     private lazy var collectionView: UICollectionView = {
         let layout: UICollectionViewCompositionalLayout =
         UICollectionViewCompositionalLayout { [weak self] sectionIndex, _ in
-            guard let section = HomeSection(rawValue: sectionIndex) else { return nil }
-            return self?.layoutFactory.layout(for: section)
+            guard let sectionType = HomeSectionType(rawValue: sectionIndex) else {
+                return nil
+            }
+            return sectionType.sectionLayout()
         }
         
         return UICollectionView(frame: .zero, collectionViewLayout: layout)
     }()
     
-    private let viewModel: HomeViewModelProtocol
+    private let viewModel: HomeViewModel
     
     // MARK: - Initializer
     
-    init(viewModel: HomeViewModelProtocol) {
+    init(viewModel: HomeViewModel) {
         self.viewModel = viewModel
         super.init(nibName: nil, bundle: nil)
     }
@@ -124,27 +125,22 @@ final class HomeViewController: BaseViewController {
 extension HomeViewController: UICollectionViewDataSource {
     
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return HomeSection.allCases.count
+        return viewModel.sections.count
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         numberOfItemsInSection section: Int
     ) -> Int {
-        HomeSection(rawValue: section)?.numberOfItems ?? 0
+        return viewModel.sections[section].numberOfItems()
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        guard let sectionType = HomeSection(rawValue: indexPath.section) else {
-            return UICollectionViewCell()
-        }
-        
-        let identifier: String = sectionType.cellIdentifier
-        
-        return collectionView.dequeueReusableCell(withReuseIdentifier: identifier, for: indexPath)
+        return viewModel.sections[indexPath.section]
+            .cellForItem(at: indexPath, in: collectionView)
     }
 
     func collectionView(
@@ -152,40 +148,33 @@ extension HomeViewController: UICollectionViewDataSource {
         viewForSupplementaryElementOfKind kind: String,
         at indexPath: IndexPath
     ) -> UICollectionReusableView {
-        guard let sectionType = HomeSection(rawValue: indexPath.section),
-              sectionType.hasSupplementaryViews
-        else {
-            return UICollectionReusableView()
-        }
-        
+        let controller: SectionDisplayable = viewModel.sections[indexPath.section]
+
         switch kind {
         case UICollectionView.elementKindSectionHeader:
-            guard let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HomeSectionHeaderView.identifier,
-                for: indexPath
-            ) as? HomeSectionHeaderView else {
-                return UICollectionReusableView()
-            }
-            header.configure(title: sectionType.headerTitle)
-            return header
-            
+            return controller.header(
+                in: collectionView,
+                at: indexPath
+            ) ?? UICollectionReusableView()
+
         case UICollectionView.elementKindSectionFooter:
-            guard let footer = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: HomeSectionFooterView.identifier,
-                for: indexPath
-            ) as? HomeSectionFooterView else {
-                return UICollectionReusableView()
+            let footerView: UICollectionReusableView? = controller.footer(
+                in: collectionView,
+                at: indexPath
+            )
+            
+            if let footerView = footerView as? HomeSectionFooterView,
+               let displayable = controller as? HeaderFooterDisplayable {
+                footerView.configure(title: displayable.footerTitle) { [weak self] in
+                    if let type = HomeSectionType(rawValue: indexPath.section) {
+                        self?.viewModel.didTapSeeAllButton(for: type)
+                    }
+                }
             }
-            
-            footer.configure(title: sectionType.footerButtonTitle) {
-                self.viewModel.didTapSeeAllButton(for: sectionType)
-            }
-            
-            return footer
-            
-        default: return UICollectionReusableView()
+            return footerView ?? UICollectionReusableView()
+
+        default:
+            return UICollectionReusableView()
         }
     }
 }

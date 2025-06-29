@@ -1,5 +1,5 @@
 //
-//  HomeSupplementaryItemFactory.swift
+//  HomeSupplementaryItemLayout.swift
 //  MatzipBook
 //
 //  Created by 심범수 on 6/17/25.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-enum HeaderSupplementaryItemFactory {
+enum HomeHeaderLayout {
     static func create() -> NSCollectionLayoutBoundarySupplementaryItem {
         NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(
@@ -20,7 +20,7 @@ enum HeaderSupplementaryItemFactory {
     }
 }
 
-enum FooterSupplementaryItemFactory {
+enum HomeFooterLayout {
     static func create() -> NSCollectionLayoutBoundarySupplementaryItem {
         NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(

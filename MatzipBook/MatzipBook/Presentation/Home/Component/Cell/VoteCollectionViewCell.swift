@@ -73,7 +73,6 @@ final class VoteCollectionViewCell: BaseCollectionViewCell {
         
         configureLabel(
             leftNameLabel,
-            text: "그집짬뽕0927",
             fontName: .bold,
             ofSize: 14,
             lines: 2
@@ -81,21 +80,17 @@ final class VoteCollectionViewCell: BaseCollectionViewCell {
         
         configureLabel(
             rightNameLabel,
-            text: "오일리",
             fontName: .bold,
             ofSize: 14,
             lines: 2
         )
         
-        configureVoteButton(leftButton, image: .imgDummy0)
-        configureVoteButton(rightButton, image: .imgDummy1)
         [bubbleStackView, voteButtonStackView].forEach { $0.configureStackView() }
         configureDefaultImageView(vsImageView, image: .imgVs)
         configureDefaultImageView(timeImageView, image: .icClock)
         
         configureLabel(
             timeLabel,
-            text: "16시간 남음",
             textColor: .sub2,
             fontName: .bold,
             ofSize: 12
@@ -217,13 +212,13 @@ private extension VoteCollectionViewCell {
         }
     }
     
-    func configureVoteButton(_ button: UIButton, image: UIImage) {
+    func configureVoteButton(_ button: UIButton, image: UIImage?) {
         button.do {
             $0.backgroundColor = .clear
             $0.clipsToBounds = true
             $0.layer.cornerRadius = 20
             $0.contentMode = .scaleAspectFit
-            $0.setImage(image.withRenderingMode(.alwaysOriginal), for: .normal)
+            $0.setImage(image?.withRenderingMode(.alwaysOriginal), for: .normal)
         }
     }
 }

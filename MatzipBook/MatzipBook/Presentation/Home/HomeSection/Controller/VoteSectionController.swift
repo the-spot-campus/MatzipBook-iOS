@@ -7,9 +7,17 @@
 
 import UIKit
 
-final class VoteSectionController: SectionController {
+final class VoteSectionController: SectionDisplayable {
     
-    func numberOfItems() -> Int { 1 }
+    private let items: [Vote]
+    
+    init(items: [Vote]) {
+        self.items = items
+    }
+    
+    func numberOfItems() -> Int {
+        return items.count
+    }
     
     func cellForItem(
         at indexPath: IndexPath,
@@ -21,6 +29,10 @@ final class VoteSectionController: SectionController {
         ) as? VoteCollectionViewCell else {
             return UICollectionViewCell()
         }
+        
+        let cellData: Vote = items[indexPath.item]
+        let viewModel: VoteCellViewModel = VoteCellViewModel(vote: cellData)
+        cell.configure(with: viewModel)
         
         return cell
     }

@@ -29,8 +29,8 @@ final class DefaultSectionLayout: SectionLayoutProviding {
             trailing: 20
         )
         section.boundarySupplementaryItems = [
-            HeaderSupplementaryItemFactory.create(),
-            FooterSupplementaryItemFactory.create()
+            HomeHeaderLayout.create(),
+            HomeFooterLayout.create()
         ]
         
         return section

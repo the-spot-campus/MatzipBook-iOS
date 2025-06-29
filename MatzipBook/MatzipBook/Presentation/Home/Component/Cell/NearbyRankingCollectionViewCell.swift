@@ -9,6 +9,12 @@ import UIKit
 
 final class NearbyRankingCollectionViewCell: BaseCollectionViewCell {
     
+    // MARK: - Bindings
+    
+    func configure(with viewModel: NearbyRankingCellViewModel) {}
+    
+    // MARK: - Setup View
+    
     override func setupStyles() {
         contentView.backgroundColor = .systemGreen
     }

@@ -9,6 +9,12 @@ import UIKit
 
 final class RecommendationCollectionViewCell: BaseCollectionViewCell {
     
+    // MARK: - Bindings
+    
+    func configure(with viewModel: RecommendationCellViewModel) {}
+    
+    // MARK: - Setup View
+    
     override func setupStyles() {
         contentView.backgroundColor = .systemBlue
     }

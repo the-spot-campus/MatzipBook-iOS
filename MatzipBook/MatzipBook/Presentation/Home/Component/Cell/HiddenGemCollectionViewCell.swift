@@ -9,6 +9,12 @@ import UIKit
 
 final class HiddenGemCollectionViewCell: BaseCollectionViewCell {
     
+    // MARK: - Bindings
+    
+    func configure(with viewModel: HiddenGemCellViewModel) {}
+    
+    // MARK: - Setup View
+    
     override func setupStyles() {
         contentView.backgroundColor = .systemIndigo
     }

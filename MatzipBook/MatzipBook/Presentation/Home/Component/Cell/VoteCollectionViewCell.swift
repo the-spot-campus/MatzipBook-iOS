@@ -31,6 +31,18 @@ final class VoteCollectionViewCell: BaseCollectionViewCell {
     private let bubbleStackView: UIStackView = UIStackView()
     private let voteButtonStackView: UIStackView = UIStackView()
     
+    // MARK: - Bindings
+    
+    func configure(with viewModel: VoteCellViewModel) {
+        leftNameLabel.text = viewModel.leftRestaurantName
+        configureVoteButton(leftButton, image: viewModel.leftRestaurantImage)
+        
+        rightNameLabel.text = viewModel.rightRestaurantName
+        configureVoteButton(rightButton, image: viewModel.rightRestaurantImage)
+        
+        timeLabel.text = "\(viewModel.remainingTime)시간 남음"
+    }
+    
     // MARK: - Setup View
     
     override func setupStyles() {

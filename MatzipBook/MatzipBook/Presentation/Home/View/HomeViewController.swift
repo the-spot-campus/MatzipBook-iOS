@@ -70,7 +70,7 @@ final class HomeViewController: BaseViewController {
         let cellTypes: [UICollectionViewCell.Type] = [
             VoteCollectionViewCell.self,
             NearbyRankingCollectionViewCell.self,
-            RecommendationCollectionViewCell.self,
+            PersonalRecommendationCollectionViewCell.self,
             HiddenGemCollectionViewCell.self
         ]
         

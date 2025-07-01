@@ -30,10 +30,16 @@ enum MainTab: Int, CaseIterable {
 
     var viewController: UIViewController {
         switch self {
-        case .home: return UINavigationController(rootViewController: HomeViewController())
-        case .location: return UINavigationController(rootViewController: MapViewController())
-        case .bookmark: return UINavigationController(rootViewController: BookmarkViewController())
-        case .profile: return UINavigationController(rootViewController: ProfileViewController())
+        case .home:
+            let viewModel: HomeViewModel = HomeViewModel()
+            let homeVC: HomeViewController = HomeViewController(viewModel: viewModel)
+            return UINavigationController(rootViewController: homeVC)
+        case .location:
+            return UINavigationController(rootViewController: MapViewController())
+        case .bookmark:
+            return UINavigationController(rootViewController: BookmarkViewController())
+        case .profile:
+            return UINavigationController(rootViewController: ProfileViewController())
         }
     }
 }
